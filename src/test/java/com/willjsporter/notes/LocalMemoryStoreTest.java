@@ -29,9 +29,26 @@ public class LocalMemoryStoreTest {
     }
 
     @Test
+    public void shouldBeAbleToRetrieveAllNotesAtOnce() {
+        assertThat(localMemoryStore.getAll(), is(List.of(testNote0, testNote1)));
+    }
+
+    @Test
     public void shouldStoreNoteInLocalMemoryStore()  {
         assertThat(localMemoryStore.getNote(NOTE_0_ID), is(testNote0));
         assertThat(localMemoryStore.getNote(NOTE_1_ID), is(testNote1));
+    }
+
+    @Test
+    public void shouldRemoveAGivenNoteFromMemoryWhenDeleted () {
+        localMemoryStore.delete(NOTE_0_ID);
+        assertThat(localMemoryStore.getAll(), is(asList(testNote1)));
+    }
+
+    @Test
+    public void shouldThrowAnExceptionWhenToldToRemoveANonExistentNote () {
+        localMemoryStore.delete(1234);
+        assertThat(localMemoryStore.getAll(), is(asList(testNote0, testNote1)));
     }
 
 }
