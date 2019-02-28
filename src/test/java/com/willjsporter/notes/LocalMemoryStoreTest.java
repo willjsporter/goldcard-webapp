@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static com.willjsporter.test_utils.TestUtils.assertErrorMessage;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -47,8 +48,15 @@ public class LocalMemoryStoreTest {
 
     @Test
     public void shouldThrowAnExceptionWhenToldToRemoveANonExistentNote () {
-        localMemoryStore.delete(1234);
-        assertThat(localMemoryStore.getAll(), is(asList(testNote0, testNote1)));
+        System.out.println(localMemoryStore.getNote(1234));
+        assertErrorMessage(() -> localMemoryStore.delete(1234), "Invalid key");
+    }
+
+    @Test
+    public void shouldAcceptEditsToExistingNotesThroughSaveMethod() {
+        Note updatedNote = new Note(NOTE_0_ID,"new Note 0 text");
+        localMemoryStore.save(updatedNote);
+        assertThat(localMemoryStore.getAll(), is(List.of(updatedNote, testNote1)));
     }
 
 }

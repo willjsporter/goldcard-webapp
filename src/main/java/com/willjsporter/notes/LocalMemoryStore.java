@@ -25,7 +25,13 @@ public class LocalMemoryStore {
         return noteStore.put(note.getId(), note);
     }
 
-    public Note delete(int noteId) {
-        return noteStore.remove(noteId);
+    public Note delete(int noteId) throws NullPointerException {
+        if(getNote(noteId) == null) {
+            throw new NullPointerException("Invalid key");
+        } else {return noteStore.remove(noteId); }
+    }
+
+    public Note edit(int note_0_id) {
+        return null;
     }
 }
