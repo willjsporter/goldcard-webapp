@@ -1,8 +1,7 @@
 package com.willjsporter.test_utils;
 
-import org.junit.Assert;
-
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestUtils {
 
@@ -11,8 +10,8 @@ public class TestUtils {
             r.run();
             fail("Expected an error but none was thrown");
         } catch (Exception e){
-            if(e.getMessage() != errorMessage) {
-                Assert.assertEquals("Messages were not equal", errorMessage, e.getMessage());
+            if(!e.getMessage().equals(errorMessage)) {
+                assertEquals("Messages were not equal", errorMessage, e.getMessage());
 //                fail(String.format("Messages were not equal:\nExpected: %s\nGot: %s", errorMessage, e.getMessage()));
             }
         }
