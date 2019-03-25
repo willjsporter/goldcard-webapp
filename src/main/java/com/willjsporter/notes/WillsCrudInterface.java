@@ -12,5 +12,4 @@ public interface WillsCrudInterface {
 
     Note delete(int noteId) throws NullPointerException;
 
-    Note edit(int note_0_id);
 }

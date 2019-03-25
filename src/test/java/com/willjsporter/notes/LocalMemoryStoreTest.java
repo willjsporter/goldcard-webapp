@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static com.willjsporter.test_utils.TestUtils.assertErrorMessage;
-import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.core.Is.is;
@@ -22,7 +21,7 @@ class LocalMemoryStoreTest {
     private final Note testNote0 = new Note(NOTE_0_ID, NOTE_0_MESSAGE);
     private final Note testNote1 = new Note(NOTE_1_ID, NOTE_1_MESSAGE);
 
-    private LocalMemoryStore localMemoryStore;
+    private WillsCrudInterface localMemoryStore;
 
     @BeforeEach
     void setup() {

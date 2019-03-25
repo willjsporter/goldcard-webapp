@@ -31,7 +31,4 @@ public class LocalMemoryStore implements WillsCrudInterface {
         } else {return noteStore.remove(noteId); }
     }
 
-    public Note edit(int note_0_id) {
-        return null;
-    }
 }
