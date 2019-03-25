@@ -1,14 +1,13 @@
 import com.willjsporter.MyResource;
-import org.junit.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class MyResourceTest {
+class MyResourceTest {
 
     @Test
-    public void shouldReturnTheRightThing() {
+    void shouldReturnTheRightThing() {
         MyResource testMyResource = new MyResource();
         assertEquals(testMyResource.getIt(),"Got it!");
     }
